@@ -1,4 +1,5 @@
 use eddb;
 
-select * from student 
-	where GPA >= (select (sum(GPA) / count(gpa)) from student);
+select *, (select avg(sat) from student) as "AVG SAT" from student 
+	where SAT < (select avg(sat) from student)
+	order by lastName; 
