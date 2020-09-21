@@ -91,3 +91,24 @@ values
 (2, 'Need some ale, mate', 'Celebration', now(), 'Send Anakin to pick it up', 14.99);
 
 select * from Request;
+
+drop table if exists LineItem;
+create table LineItem (
+	ID int not null auto_increment, primary key (ID),
+    RequestID int not null, foreign key (RequestID) references Request(ID),
+    ProductID int not null, foreign key (ProductID) references Product(ID),
+    Quantity int not null
+);
+
+insert LineItem
+values
+(0, 1, 1, 1),
+(0, 2, 2, 1)
+;
+select * from LineItem;
+
+select * from User;
+select * from Vendor;
+select * from Product;
+select * from Request;
+select * from LineItem;
