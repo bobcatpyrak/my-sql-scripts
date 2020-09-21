@@ -1,15 +1,25 @@
-create table Students (
-	ID int not null auto_increment, primary key(ID),
-    FirstName varchar(16) not null,
-    LastName varchar(16) not null,
-    Email varchar(100) not null,
-    Phone varchar(12),
-    Course varchar(10)
-    );
+-- Recreate database when script is run (warning: deletes database)
+use sys;
+drop database if exists bootcamp;
+create database bootcamp;
+use bootcamp;
+
+CREATE TABLE Students (
+    ID INT NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (ID),
+    FirstName VARCHAR(16) NOT NULL,
+    LastName VARCHAR(16) NOT NULL,
+    Email VARCHAR(100) NOT NULL,
+    Phone VARCHAR(12),
+    Course VARCHAR(10)
+);
     
 insert Students
 (ID, FirstName, LastName, Email)
 VALUES
 (0, 'Jonathan', "Pyrak", "something@gmail.com");
 
-select * from students
+SELECT 
+    *
+FROM
+    students
