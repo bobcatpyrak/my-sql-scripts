@@ -35,10 +35,10 @@ CREATE TABLE Orders (
     Total DECIMAL(9,2) NOT NULL,
     Created datetime not null default now()
 );
+select * from Orders;
 
-BEGIN;
 select * from customers;
-
+BEGIN;
 set @cust1 = 2;
 set @cust1price = 10.99;
 set @cust2 = 1;
@@ -52,10 +52,22 @@ insert Orders
 ;
 
 update Customers set
-	Sales = asdsafSales + @cust1price where ID = @cust1;
+	Sales = Sales + @cust1price where ID = @cust1;
 update Customers set
     Sales = Sales + @cust2price where ID = @cust2;
 -- how does transaction work? need rollback
+
+ ERROR <>0
+	Rollback
+else
 	COMMIT;
 SELECT * FROM Customers c
 	join Orders o on o.CustomerID = c.ID;
+    
+    use bcdb;
+BEGIN;
+insert Customers (Code, Name)
+	values ('aaaa', 'Joker');
+select * from Customers;
+
+select * from Customers;

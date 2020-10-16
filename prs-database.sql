@@ -97,7 +97,8 @@ create table LineItem (
 	ID int not null auto_increment, primary key (ID),
     RequestID int not null, foreign key (RequestID) references Request(ID),
     ProductID int not null, foreign key (ProductID) references Product(ID),
-    Quantity int not null
+    Quantity int not null default 1,
+    Constraint req_pdt unique (RequestID, ProductID)
 );
 
 insert LineItem
@@ -112,3 +113,7 @@ select * from Vendor;
 select * from Product;
 select * from Request;
 select * from LineItem;
+
+drop user if exists prs_user@localhost;
+create user prs_user@localhost identified by 'sesame';
+grant select, insert, delete, update on prs.* to prs_user@localhost;
